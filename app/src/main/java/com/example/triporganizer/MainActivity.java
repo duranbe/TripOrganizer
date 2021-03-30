@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 DatabaseHelper.DESCRIPTION, DatabaseHelper.DATE, DatabaseHelper.TIME,DatabaseHelper.ADDRESS,
                 DatabaseHelper.VISITED};
 
-        final int[]to= new int[]{R.id.idTrip,R.id.tvTitle,R.id.etDescription,R.id.tvDate,R.id.tvTime,R.id.tvAddress,R.id.cbVisited};
+        final int[]to= new int[]{R.id.idTrip,R.id.tvTitle,R.id.tvDescription,R.id.tvDate,R.id.tvTime,R.id.tvAddress,R.id.tvVisited};
 
         Cursor c = myHelper.getAllMoments();
         SimpleCursorAdapter adapter= new SimpleCursorAdapter(this,R.layout.trip_item_view,c,from,to,0);
