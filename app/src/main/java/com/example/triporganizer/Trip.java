@@ -8,6 +8,8 @@ import android.util.EventLogTags;
 
 import androidx.annotation.RequiresApi;
 
+import static java.lang.Boolean.parseBoolean;
+
 public class Trip implements Parcelable {
 
     long id;
@@ -96,7 +98,7 @@ public class Trip implements Parcelable {
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.Q)
+
     @Override
     public void writeToParcel(Parcel dest, int flags){
         dest.writeLong(id);
@@ -105,7 +107,7 @@ public class Trip implements Parcelable {
         dest.writeString(date);
         dest.writeString(time);
         dest.writeString(address);
-        dest.writeBoolean(visited);
+        dest.writeString(String.valueOf(visited));
 
     }
 
@@ -122,7 +124,7 @@ public class Trip implements Parcelable {
         }
     };
 
-    @RequiresApi(api = Build.VERSION_CODES.Q)
+
     public Trip(Parcel parcel){
         id = parcel.readLong();
         title = parcel.readString();
@@ -130,7 +132,7 @@ public class Trip implements Parcelable {
         date = parcel.readString();
         time = parcel.readString();
         address = parcel.readString();
-        visited = parcel.readBoolean();
+        visited = parseBoolean(parcel.readString());
     }
 
 

@@ -42,7 +42,6 @@ public class TripDetails extends AppCompatActivity {
         etDescription = (EditText) findViewById(R.id.etDescription);
         etDate = (EditText) findViewById(R.id.etDate);
         etTime = (EditText) findViewById(R.id.etTime);
-
         etAddress = (EditText) findViewById(R.id.etAddress);
         cbVisited = (CheckBox) findViewById(R.id.cbVisited);
 
@@ -129,7 +128,7 @@ public class TripDetails extends AppCompatActivity {
         showTimePicker();
     }
 
-    public void savTrip(View view) {
+    public void saveTrip(View view) {
         //Log.d("ADD", String.valueOf(fromAdd));
         String title = etTitle.getText().toString();
         String description = etDescription.getText().toString();
