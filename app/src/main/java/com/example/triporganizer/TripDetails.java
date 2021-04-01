@@ -93,6 +93,8 @@ public class TripDetails extends AppCompatActivity {
         finish();
     }
 
+
+
     private void showDatePicker() {
         DatePickerFragment date= new DatePickerFragment();
         final Calendar c = Calendar.getInstance();
