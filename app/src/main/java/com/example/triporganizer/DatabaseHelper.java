@@ -82,7 +82,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    public Cursor getAllMoments(){
+    public Cursor getAllTrips(){
         String[] projection = {_ID,TITLE, DESCRIPTION, DATE, TIME , ADDRESS , VISITED};
         Cursor cursor = database.query(TABLE_NAME,projection,null,null,null,null,null,null);
         return cursor;
@@ -92,5 +92,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     {
         database.delete(TABLE_NAME, _ID + "=" + _id, null);
     }
+
+    public Cursor getAddress(long _id){
+        String[] columns = {_ID,ADDRESS};
+        String[] args = {String.valueOf(_id)};
+        Cursor cursor = database.query(TABLE_NAME,columns,_ID + "=?", args,null,null,null,"1");
+        return cursor;
+    }
+
 
 }

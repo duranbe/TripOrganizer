@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -88,10 +90,11 @@ public class MainActivity extends AppCompatActivity {
 
         final int[]to= new int[]{R.id.idTrip,R.id.tvTitle,R.id.tvDescription,R.id.tvDate,R.id.tvTime,R.id.tvAddress,R.id.tvVisited};
 
-        Cursor c = myHelper.getAllMoments();
+        Cursor c = myHelper.getAllTrips();
         SimpleCursorAdapter adapter= new SimpleCursorAdapter(this,R.layout.trip_item_view,c,from,to,0);
         adapter.notifyDataSetChanged();
         lvTrips.setAdapter(adapter);
+
     }
 
     @Override
@@ -102,12 +105,31 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info= (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
 
         if (item.getItemId()==R.id.delete){
             myHelper.delete(info.id);
             chargeData();
             return true;
+        }
+
+        if (item.getItemId()==R.id.open_google_maps){
+
+            Cursor c = myHelper.getAddress(info.id);
+            String trip_address = null;
+
+            if (c.moveToFirst()){
+                trip_address = c.getString(c.getColumnIndex("address"));
+            }
+
+            String map = "http://maps.google.co.in/maps?q=" + trip_address ;
+            Uri gmmIntentUri = Uri.parse(map);
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+            mapIntent.setPackage("com.google.android.apps.maps");
+            if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(mapIntent);
+            }
+
         }
         return super.onContextItemSelected(item);
     }
