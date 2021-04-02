@@ -6,6 +6,12 @@
     <string name="form_time">Time</string>
     <string name="form_address">Address</string>
     <string name="form_visited">Visited</string>
+    <string name="hint_title">Trip title</string>
+    <string name="hint_description">Trip description</string>
+    <string name="hint_date">Date of the trip</string>
+    <string name="hint_time">Time of the trip</string>
+    <string name="hint_address">Address of the trip</string>
     <string name="btn_save">Save</string>
     <string name="btn_cancel">Cancel</string>
+    <string name="empty_list">Nothing to see here</string>
 </resources>

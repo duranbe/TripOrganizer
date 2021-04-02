@@ -12,7 +12,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -39,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         lvTrips.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-
                 String idItem= ((TextView)view.findViewById(R.id.idTrip)).getText().toString();
                 String titleItem = ((TextView)view.findViewById(R.id.tvTitle)).getText().toString();
                 String descriptionItem = ((TextView)view.findViewById(R.id.tvDescription)).getText().toString();
@@ -47,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
                 String timeItem = ((TextView)view.findViewById(R.id.tvTime)).getText().toString();
                 String addressItem = ((TextView)view.findViewById(R.id.tvAddress)).getText().toString();
                 Boolean visitedItem = ((TextView)view.findViewById(R.id.tvVisited)).getText().toString().equals("1");
-
                 Trip pTrip = new Trip(Long.parseLong(idItem),titleItem,descriptionItem,dateItem,timeItem,addressItem,visitedItem);
                 Intent intent = new Intent(getApplicationContext(), TripDetails.class);
                 intent.putExtra("SelectedTrip",pTrip);

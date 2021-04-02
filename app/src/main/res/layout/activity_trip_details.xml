@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Trip title"
+                android:hint="@string/hint_title"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName" />
         </TableRow>
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:autofillHints="trip description"
                 android:ems="10"
-                android:hint="Trip description"
+                android:hint="@string/hint_description"
                 android:inputType="textPersonName" />
         </TableRow>
 
@@ -84,7 +84,7 @@
                 android:ems="10"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:hint="Date of the trip"
+                android:hint="@string/hint_date"
                 android:autofillHints="trip date"
                 android:importantForAutofill="no"
                 android:inputType="date"
@@ -106,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Time of the trip"
+                android:hint="@string/hint_time"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
                 android:onClick="pickTime" />
@@ -127,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Address of the trip"
+                android:hint="@string/hint_address"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName" />
         </TableRow>
@@ -146,6 +146,7 @@
                 android:id="@+id/cbVisited"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
         </TableRow>
 
         <TableRow
