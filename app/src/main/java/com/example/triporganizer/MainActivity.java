@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +19,11 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
+import android.content.res.Configuration;
+
+
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseHelper myHelper;
@@ -25,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Locale locale = new Locale( "fr");
+        Configuration conf = getResources().getConfiguration();
+        conf.locale = locale;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
