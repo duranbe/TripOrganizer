@@ -6,15 +6,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -92,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         final int[]to= new int[]{R.id.idTrip,R.id.tvTitle,R.id.tvDescription,R.id.tvDate,R.id.tvTime,R.id.tvAddress,R.id.tvVisited};
 
         Cursor c = myHelper.getAllTrips();
-        SimpleCursorAdapter adapter= new SimpleCursorAdapter(this,R.layout.trip_item_view,c,from,to,0);
+        SimpleCursorAdapter adapter= new SimpleCursorAdapter(this,R.layout.trip_item_card_view,c,from,to,0);
         adapter.notifyDataSetChanged();
         lvTrips.setAdapter(adapter);
 
