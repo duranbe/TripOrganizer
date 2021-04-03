@@ -100,5 +100,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getOne(long _id){
+        String[] columns =  {_ID,TITLE, DESCRIPTION, DATE, TIME , ADDRESS};
+        String[] args = {String.valueOf(_id)};
+        Cursor cursor = database.query(TABLE_NAME,columns,_ID + "=?", args,null,null,null,"1");
+        return cursor;
+
+    }
+
 
 }

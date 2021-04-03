@@ -4,6 +4,9 @@
         android:id="@+id/open_google_maps"
         android:title="Open in Maps"></item>
 
+    <item
+        android:id="@+id/share_data"
+        android:title="Share"></item>
 
     <item
         android:id="@+id/delete"

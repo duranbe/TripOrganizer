@@ -129,6 +129,30 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+
+        if (item.getItemId()==R.id.share_data){
+            shareInfo(info.id);
+        }
+
         return super.onContextItemSelected(item);
     }
+
+    public void shareInfo(long id){
+        Cursor c = myHelper.getOne(id);
+        String info = null;
+
+        if (c.moveToFirst()) {
+            info = c.getString(c.getColumnIndex("title")) + " " +
+                    c.getString(c.getColumnIndex("date")) + " " +
+                    c.getString(c.getColumnIndex("time")) + " " +
+                    c.getString(c.getColumnIndex("address"));
+        }
+
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, info);
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent) ;
+    }
 }
+
