@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">TripOrganizer</string>
+    <string name="form_title">Titre</string>
+    <string name="form_description">Description</string>
+    <string name="form_date">Date</string>
+    <string name="form_time">Heure</string>
+    <string name="form_address">Addresse</string>
+    <string name="form_visited">Visité</string>
+    <string name="hint_title">Nom du voyage</string>
+    <string name="hint_description">Description du voyage</string>
+    <string name="hint_date">Date du voyage</string>
+    <string name="hint_time">Heure du voyage</string>
+    <string name="hint_address">Addresse/Lieu dy voyage </string>
+    <string name="btn_save">Enregistrer</string>
+    <string name="btn_cancel">Annuler</string>
+    <string name="empty_list">Rien à voir ici</string>
+</resources>
