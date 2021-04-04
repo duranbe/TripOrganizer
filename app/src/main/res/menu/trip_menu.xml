@@ -6,7 +6,7 @@
             android:title="Add"
             android:icon="@drawable/ic_add"
             app:showAsAction="ifRoom"/>
-        <item
-            android:id="@+id/search"
-            android:title="Search"/>
+    <item
+        android:id="@+id/settings"
+        android:title="Settings" />
     </menu>

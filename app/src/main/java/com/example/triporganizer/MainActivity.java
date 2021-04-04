@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -82,8 +80,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             }
-            case R.id.search: {
-                Toast.makeText(this,"Search",Toast.LENGTH_SHORT).show();
+            case R.id.settings: {
+                Toast.makeText(this,"Settings",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this,SettingsActivity.class);
+                startActivity(intent);
                 return true;
             }
             default:
