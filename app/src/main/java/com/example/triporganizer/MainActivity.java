@@ -51,29 +51,35 @@ public class MainActivity extends AppCompatActivity {
         myHelper = new DatabaseHelper(this);
         myHelper.open();
 
-        this.lvTrips = findViewById(R.id.lvTrip);
-        this.lvTrips.setEmptyView(findViewById(R.id.tvEmpty));
-        chargeData();
+        int orientation = getResources().getConfiguration().orientation;
 
-        this.lvTrips.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                String idItem= ((TextView)view.findViewById(R.id.idTrip)).getText().toString();
-                String titleItem = ((TextView)view.findViewById(R.id.tvTitle)).getText().toString();
-                String descriptionItem = ((TextView)view.findViewById(R.id.tvDescription)).getText().toString();
-                String dateItem = ((TextView)view.findViewById(R.id.tvDate)).getText().toString();
-                String timeItem = ((TextView)view.findViewById(R.id.tvTime)).getText().toString();
-                String addressItem = ((TextView)view.findViewById(R.id.tvAddress)).getText().toString();
-                Boolean visitedItem = ((TextView)view.findViewById(R.id.tvVisited)).getText().toString().equals("1");
-                Trip pTrip = new Trip(Long.parseLong(idItem),titleItem,descriptionItem,dateItem,timeItem,addressItem,visitedItem);
-                Intent intent = new Intent(getApplicationContext(), TripDetails.class);
-                intent.putExtra("SelectedTrip",pTrip);
-                intent.putExtra("fromAdd",false);
-                startActivity(intent);
-            }
-        });
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            // In Portrait Mode
+            this.lvTrips = findViewById(R.id.lvTrip);
+            this.lvTrips.setEmptyView(findViewById(R.id.tvEmpty));
+            chargeData();
 
-        registerForContextMenu(this.lvTrips);
+            this.lvTrips.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                    String idItem= ((TextView)view.findViewById(R.id.idTrip)).getText().toString();
+                    String titleItem = ((TextView)view.findViewById(R.id.tvTitle)).getText().toString();
+                    String descriptionItem = ((TextView)view.findViewById(R.id.tvDescription)).getText().toString();
+                    String dateItem = ((TextView)view.findViewById(R.id.tvDate)).getText().toString();
+                    String timeItem = ((TextView)view.findViewById(R.id.tvTime)).getText().toString();
+                    String addressItem = ((TextView)view.findViewById(R.id.tvAddress)).getText().toString();
+                    Boolean visitedItem = ((TextView)view.findViewById(R.id.tvVisited)).getText().toString().equals("1");
+                    Trip pTrip = new Trip(Long.parseLong(idItem),titleItem,descriptionItem,dateItem,timeItem,addressItem,visitedItem);
+                    Intent intent = new Intent(getApplicationContext(), TripDetails.class);
+                    intent.putExtra("SelectedTrip",pTrip);
+                    intent.putExtra("fromAdd",false);
+                    startActivity(intent);
+                }
+            });
+
+            registerForContextMenu(this.lvTrips);
+        }
+
     }
 
     @Override

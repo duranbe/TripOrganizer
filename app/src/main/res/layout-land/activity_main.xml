@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".MainActivity">
+
+
+    <fragment
+        android:id="@+id/listFragment"
+        class="com.example.triporganizer.ListFragment"
+        android:layout_width="189dp"
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="15.0sp">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.example.triporganizer.DetailFragment"
+        >
+
+    </fragment>
+
+</LinearLayout>

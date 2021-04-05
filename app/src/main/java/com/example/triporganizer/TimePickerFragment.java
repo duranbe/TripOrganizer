@@ -22,7 +22,7 @@ public class TimePickerFragment extends DialogFragment {
     @Override
     public void setArguments(Bundle args){
         super.setArguments(args);
-        hour = args.getInt("year");
+        hour = args.getInt("hour");
         minute = args.getInt("minute");
 
     }

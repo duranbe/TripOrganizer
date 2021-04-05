@@ -20,6 +20,7 @@
         app:layout_constraintTop_toBottomOf="@id/lvTrip"
         app:layout_constraintVertical_bias="1.0" />
 
+
     <ListView
         android:id="@+id/lvTrip"
         android:layout_width="match_parent"
@@ -36,5 +37,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.021" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
