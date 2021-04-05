@@ -1,13 +1,17 @@
 package com.example.triporganizer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Locale;
 
 public class SettingsActivity  extends AppCompatActivity {
 
@@ -19,7 +23,7 @@ public class SettingsActivity  extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         sharedPreferences = getSharedPreferences("PREF_NAME", Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
+
         String language = sharedPreferences.getString("lang","en");
         setContentView(R.layout.activity_settings);
 
@@ -28,6 +32,7 @@ public class SettingsActivity  extends AppCompatActivity {
             case "en":
                 RadioButton rbEnglish = findViewById(R.id.rbEnglish);
                 rbEnglish.setChecked(true);
+
                 break;
 
             case "fr":
@@ -35,27 +40,45 @@ public class SettingsActivity  extends AppCompatActivity {
                 rbFrench.setChecked(true);
                 break;
         }
+
+
+
     }
 
 
     public void onLanguageRadioButtonClick(View view){
 
         boolean checked = ((RadioButton) view).isChecked();
-
+        editor = sharedPreferences.edit();
+        String language = "en";
         switch(view.getId()){
             case R.id.rbEnglish:
                 if (checked) {
+                    language = "en";
                     editor.putString("lang", "en");
+
                     editor.commit();
                 }
                     break;
             case R.id.rbFrench:
+                language = "fr";
                 if (checked){
                     editor.putString("lang", "fr");
                     editor.commit();
                 }
 
                     break;
+
         }
+
+        Locale locale = new Locale(language);
+        Configuration conf = getResources().getConfiguration();
+
+        conf.locale = locale;
+        getBaseContext().getResources().updateConfiguration(conf,
+                getBaseContext().getResources().getDisplayMetrics());
+
+        //finish();
+        //startActivity(getIntent());
     }
 }

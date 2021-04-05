@@ -15,4 +15,6 @@
     <string name="btn_cancel">Cancel</string>
     <string name="empty_list">Nothing to see here</string>
     <string name="settings_lang">Language</string>
+    <string name="settings_en">English</string>
+    <string name="settings_fr">French</string>
 </resources>
