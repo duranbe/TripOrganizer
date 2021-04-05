@@ -20,8 +20,9 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
                 android:paddingTop="6dp"
+                android:paddingRight="8dp"
                 android:paddingBottom="4dp"
-                android:text="TextView"
+                android:text="@string/sample_text"
                 android:textAllCaps="false"
                 android:textStyle="bold" />
 
@@ -29,7 +30,7 @@
                 android:id="@+id/idTrip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="@string/sample_text"
                 android:visibility="invisible" />
         </TableRow>
 
@@ -43,8 +44,9 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
                 android:paddingTop="4dp"
+                android:paddingRight="8dp"
                 android:paddingBottom="4dp"
-                android:text="Description" />
+                android:text="@string/sample_text" />
         </TableRow>
 
         <TableRow
@@ -57,18 +59,19 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
                 android:paddingTop="4dp"
+                android:paddingRight="8dp"
                 android:paddingBottom="4dp"
-                android:text="Adresse" />
+                android:text="@string/sample_text" />
 
             <TextView
                 android:id="@+id/tvPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
-                android:paddingRight="8dp"
                 android:paddingTop="4dp"
+                android:paddingRight="8dp"
                 android:paddingBottom="4dp"
-                android:text="Phone number"
+                android:text="@string/sample_text"
                 android:visibility="invisible" />
 
             <TextView
@@ -89,8 +92,9 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
                 android:paddingTop="4dp"
+                android:paddingRight="8dp"
                 android:paddingBottom="6dp"
-                android:text="Jour" />
+                android:text="@string/sample_text" />
 
             <TextView
                 android:id="@+id/tvTime"
@@ -98,8 +102,9 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
                 android:paddingTop="4dp"
+                android:paddingRight="8dp"
                 android:paddingBottom="6dp"
-                android:text="Heure" />
+                android:text="@string/sample_text" />
 
         </TableRow>
 

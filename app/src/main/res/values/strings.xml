@@ -17,4 +17,5 @@
     <string name="settings_lang">Language</string>
     <string name="settings_en">English</string>
     <string name="settings_fr">French</string>
+    <string name="sample_text">SampleText</string>
 </resources>
