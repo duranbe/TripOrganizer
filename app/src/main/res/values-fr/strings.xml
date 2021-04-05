@@ -14,4 +14,5 @@
     <string name="btn_save">Enregistrer</string>
     <string name="btn_cancel">Annuler</string>
     <string name="empty_list">Rien à voir ici</string>
+    <string name="settings_lang">Langue</string>
 </resources>

@@ -2,10 +2,13 @@ package com.example.triporganizer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,24 +29,33 @@ public class MainActivity extends AppCompatActivity {
 
     private DatabaseHelper myHelper;
 
-    ListView lvTrips;
+    SharedPreferences sharedPreferences;
+    private ListView lvTrips;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Locale locale = new Locale( "fr");
-        Configuration conf = getResources().getConfiguration();
-        conf.locale = locale;
+
         super.onCreate(savedInstanceState);
+
+        sharedPreferences = getSharedPreferences("PREF_NAME", MODE_PRIVATE);
+        String language = sharedPreferences.getString("lang","en");
+        Locale locale = new Locale(language);
+        Configuration conf = getResources().getConfiguration();
+
+        conf.locale = locale;
+        getBaseContext().getResources().updateConfiguration(conf,
+                getBaseContext().getResources().getDisplayMetrics());
+
         setContentView(R.layout.activity_main);
 
         myHelper = new DatabaseHelper(this);
         myHelper.open();
 
-        lvTrips = (ListView) findViewById(R.id.lvTrip);
-        lvTrips.setEmptyView(findViewById(R.id.tvEmpty));
+        this.lvTrips = findViewById(R.id.lvTrip);
+        this.lvTrips.setEmptyView(findViewById(R.id.tvEmpty));
         chargeData();
 
-        lvTrips.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        this.lvTrips.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 String idItem= ((TextView)view.findViewById(R.id.idTrip)).getText().toString();
@@ -61,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        registerForContextMenu(lvTrips);
+        registerForContextMenu(this.lvTrips);
     }
 
     @Override
@@ -101,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         Cursor c = myHelper.getAllTrips();
         SimpleCursorAdapter adapter= new SimpleCursorAdapter(this,R.layout.trip_item_card_view,c,from,to,0);
         adapter.notifyDataSetChanged();
-        lvTrips.setAdapter(adapter);
+        this.lvTrips.setAdapter(adapter);
 
     }
 
