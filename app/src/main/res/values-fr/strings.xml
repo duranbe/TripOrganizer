@@ -18,4 +18,8 @@
     <string name="settings_en">Anglais</string>
     <string name="settings_fr">Français</string>
     <string name="sample_text">SampleText</string>
+    <string name="settings_notification">Rappel</string>
+    <string name="settings_1w">1 Semaine avant</string>
+    <string name="settings_2w">2 Semaines avant</string>
+    <string name="settings_3w">3 Semaines avant</string>
 </resources>
