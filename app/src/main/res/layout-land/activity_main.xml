@@ -13,16 +13,17 @@
         android:layout_width="189dp"
         android:layout_height="match_parent"
         android:divider="@android:color/transparent"
-        android:dividerHeight="15.0sp">
+        android:dividerHeight="15.0sp"
+        android:visibility="visible">
 
     </fragment>
 
     <fragment
         android:id="@+id/detailFragment"
+        class="com.example.triporganizer.DetailFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        class="com.example.triporganizer.DetailFragment"
-        >
+        android:visibility="visible">
 
     </fragment>
 

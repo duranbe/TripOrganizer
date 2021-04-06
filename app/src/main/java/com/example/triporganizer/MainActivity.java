@@ -1,7 +1,11 @@
 package com.example.triporganizer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import android.content.res.Configuration;
 
@@ -182,5 +187,7 @@ public class MainActivity extends AppCompatActivity {
         sendIntent.setType("text/plain");
         startActivity(sendIntent) ;
     }
+
+
 }
 

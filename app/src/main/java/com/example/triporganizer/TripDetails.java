@@ -1,9 +1,13 @@
 package com.example.triporganizer;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -15,6 +19,7 @@ import android.widget.TimePicker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 public class TripDetails extends AppCompatActivity {
 
@@ -131,7 +136,8 @@ public class TripDetails extends AppCompatActivity {
     }
 
     public void saveTrip(View view) {
-        //Log.d("ADD", String.valueOf(fromAdd));
+
+
         String title = etTitle.getText().toString();
         String description = etDescription.getText().toString();
         String date = etDate.getText().toString();
@@ -139,22 +145,29 @@ public class TripDetails extends AppCompatActivity {
         String address = etAddress.getText().toString();
         boolean visited = cbVisited.isChecked();
 
+        Intent main ;
+
         if(fromAdd) {
             Trip trip = new Trip(title,description,date,time,address,visited);
             myHelper.add(trip);
 
-            Intent main = new Intent(this,MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(main);
+            main = new Intent(this,MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
         }
         else {
             Long id = Long.parseLong(tvId.getText().toString());
             Trip trip = new Trip(id,title,description,date,time,address,visited);
             int n = myHelper.update(trip);
 
-            Intent main = new Intent(this,MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(main);
+            main = new Intent(this,MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
         }
 
+        Intent notifyIntent = new Intent(this,MyReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 2, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(7*24*60), pendingIntent);
+        startActivity(main);
 
     }
 }
