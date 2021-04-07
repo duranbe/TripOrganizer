@@ -73,8 +73,9 @@ public class MainActivity extends AppCompatActivity {
                     String dateItem = ((TextView)view.findViewById(R.id.tvDate)).getText().toString();
                     String timeItem = ((TextView)view.findViewById(R.id.tvTime)).getText().toString();
                     String addressItem = ((TextView)view.findViewById(R.id.tvAddress)).getText().toString();
+                    String phoneItem = ((TextView)view.findViewById(R.id.tvPhone)).getText().toString();
                     Boolean visitedItem = ((TextView)view.findViewById(R.id.tvVisited)).getText().toString().equals("1");
-                    Trip pTrip = new Trip(Long.parseLong(idItem),titleItem,descriptionItem,dateItem,timeItem,addressItem,visitedItem);
+                    Trip pTrip = new Trip(Long.parseLong(idItem),titleItem,descriptionItem,dateItem,timeItem,addressItem,phoneItem,visitedItem);
                     Intent intent = new Intent(getApplicationContext(), TripDetails.class);
                     intent.putExtra("SelectedTrip",pTrip);
                     intent.putExtra("fromAdd",false);
@@ -117,9 +118,9 @@ public class MainActivity extends AppCompatActivity {
     public void chargeData(){
         final String[] from = new String[]{DatabaseHelper._ID, DatabaseHelper.TITLE,
                 DatabaseHelper.DESCRIPTION, DatabaseHelper.DATE, DatabaseHelper.TIME,DatabaseHelper.ADDRESS,
-                DatabaseHelper.VISITED};
+                DatabaseHelper.PHONE,DatabaseHelper.VISITED};
 
-        final int[]to= new int[]{R.id.idTrip,R.id.tvTitle,R.id.tvDescription,R.id.tvDate,R.id.tvTime,R.id.tvAddress,R.id.tvVisited};
+        final int[]to= new int[]{R.id.idTrip,R.id.tvTitle,R.id.tvDescription,R.id.tvDate,R.id.tvTime,R.id.tvAddress,R.id.tvPhone,R.id.tvVisited};
 
         Cursor c = myHelper.getAllTrips();
         SimpleCursorAdapter adapter= new SimpleCursorAdapter(this,R.layout.trip_item_card_view,c,from,to,0);
@@ -165,6 +166,21 @@ public class MainActivity extends AppCompatActivity {
 
         if (item.getItemId()==R.id.share_data){
             shareInfo(info.id);
+        }
+
+        if (item.getItemId()==R.id.call_phone){
+
+            Cursor c = myHelper.getPhone(info.id);
+            String trip_phone = null;
+
+            if (c.moveToFirst()){
+                trip_phone = c.getString(c.getColumnIndex("phone"));
+            }
+
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:"+trip_phone));
+            startActivity(intent);
+
         }
 
         return super.onContextItemSelected(item);

@@ -9,6 +9,12 @@
         android:title="Share"></item>
 
     <item
+        android:id="@+id/call_phone"
+        android:title="Call Number"></item>
+
+
+
+    <item
         android:id="@+id/delete"
         android:title="Delete"></item>
 

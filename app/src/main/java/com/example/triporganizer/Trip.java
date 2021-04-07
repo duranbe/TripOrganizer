@@ -18,28 +18,31 @@ public class Trip implements Parcelable {
     String date;
     String time;
     String address;
+    String phone;
     boolean visited ;
 
     public Trip() {
 
     }
 
-    public Trip(String title, String description, String date, String time, String address, boolean visited){
+    public Trip(String title, String description, String date, String time, String address, String phone, boolean visited){
         this.title = title;
         this.description =  description;
         this.date = date;
         this.time = time;
         this.address = address;
+        this.phone = phone;
         this.visited = visited;
     }
 
-    public Trip(long id, String title, String description, String date, String time, String address, boolean visited){
+    public Trip(long id, String title, String description, String date, String time, String address,String phone, boolean visited){
         this.id = id;
         this.title = title;
         this.description =  description;
         this.date = date;
         this.time = time;
         this.address = address;
+        this.phone = phone;
         this.visited = visited;
     }
 
@@ -87,6 +90,10 @@ public class Trip implements Parcelable {
 
     public void setAddress(String address){ this.address = address;}
 
+    public String getPhone(){return  phone;}
+
+    public void setPhone(String phone){this.phone = phone;}
+
     public boolean getVisited(){ return visited;}
 
     public void setVisited(boolean visited){ this.visited = visited;}
@@ -107,6 +114,7 @@ public class Trip implements Parcelable {
         dest.writeString(date);
         dest.writeString(time);
         dest.writeString(address);
+        dest.writeString(phone);
         dest.writeString(String.valueOf(visited));
 
     }
@@ -132,6 +140,7 @@ public class Trip implements Parcelable {
         date = parcel.readString();
         time = parcel.readString();
         address = parcel.readString();
+        phone = parcel.readString();
         visited = parseBoolean(parcel.readString());
     }
 

@@ -78,8 +78,7 @@
                 android:paddingTop="4dp"
                 android:paddingRight="8dp"
                 android:paddingBottom="4dp"
-                android:text="@string/sample_text"
-                android:visibility="invisible" />
+                android:text="@string/sample_text" />
 
             <TextView
                 android:id="@+id/tvVisited"

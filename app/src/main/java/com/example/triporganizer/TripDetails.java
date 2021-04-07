@@ -36,6 +36,7 @@ public class TripDetails extends AppCompatActivity {
     private EditText etDate;
     private EditText etTime;
     private EditText etAddress;
+    private EditText etPhone;
     private CheckBox cbVisited;
     private TextView tvId;
     private boolean fromAdd;
@@ -55,6 +56,7 @@ public class TripDetails extends AppCompatActivity {
         etDate = (EditText) findViewById(R.id.etDate);
         etTime = (EditText) findViewById(R.id.etTime);
         etAddress = (EditText) findViewById(R.id.etAddress);
+        etPhone = (EditText) findViewById(R.id.etPhone);
         cbVisited = (CheckBox) findViewById(R.id.cbVisited);
 
         onDate = new DatePickerDialog.OnDateSetListener() {
@@ -97,6 +99,7 @@ public class TripDetails extends AppCompatActivity {
             etDate.setText(selectedTrip.getDate());
             etTime.setText(selectedTrip.getTime());
             etAddress.setText(selectedTrip.getAddress());
+            etPhone.setText(selectedTrip.getPhone());
             cbVisited.setChecked(selectedTrip.getVisited());
         }
     }
@@ -150,12 +153,13 @@ public class TripDetails extends AppCompatActivity {
         String date = etDate.getText().toString();
         String time = etTime.getText().toString();
         String address = etAddress.getText().toString();
+        String phone = etPhone.getText().toString();
         boolean visited = cbVisited.isChecked();
 
         Intent main ;
 
         if(fromAdd) {
-            Trip trip = new Trip(title,description,date,time,address,visited);
+            Trip trip = new Trip(title,description,date,time,address,phone,visited);
             myHelper.add(trip);
 
             main = new Intent(this,MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -163,7 +167,7 @@ public class TripDetails extends AppCompatActivity {
         }
         else {
             Long id = Long.parseLong(tvId.getText().toString());
-            Trip trip = new Trip(id,title,description,date,time,address,visited);
+            Trip trip = new Trip(id,title,description,date,time,address,phone,visited);
             int n = myHelper.update(trip);
 
             main = new Intent(this,MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

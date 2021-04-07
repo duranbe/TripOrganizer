@@ -19,6 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATE = "date";
     public static final String TIME = "time";
     public static final String ADDRESS = "address";
+    public static final String PHONE = "phone";
     public static final String VISITED  = "visited";
 
     static final String DB_NAME = "PreciousMoments.DB";
@@ -32,6 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             DATE + " TEXT, "+
             TIME + " TEXT," +
             ADDRESS + " TEXT," +
+            PHONE + " TEXT," +
             VISITED + " INTEGER);" ;
 
 
@@ -66,6 +68,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(DATE,trip.getDate());
         contentValues.put(TIME,trip.getTime());
         contentValues.put(ADDRESS,trip.getAddress());
+        contentValues.put(PHONE,trip.getPhone());
         contentValues.put(VISITED,trip.getVisited());
         database.insert(TABLE_NAME,null,contentValues);
     }
@@ -77,13 +80,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(DATE, trip.getDate());
         contentValues.put(TIME, trip.getTime());
         contentValues.put(ADDRESS,trip.getAddress());
+        contentValues.put(PHONE,trip.getPhone());
         contentValues.put(VISITED,trip.getVisited());
         int count = database.update(TABLE_NAME, contentValues, this._ID + " = " + _id, null);
         return count;
     }
 
     public Cursor getAllTrips(){
-        String[] projection = {_ID,TITLE, DESCRIPTION, DATE, TIME , ADDRESS , VISITED};
+        String[] projection = {_ID,TITLE, DESCRIPTION, DATE, TIME , ADDRESS ,PHONE, VISITED};
         Cursor cursor = database.query(TABLE_NAME,projection,null,null,null,null,null,null);
         return cursor;
     }
@@ -100,16 +104,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getPhone(long _id){
+        String[] columns = {_ID,PHONE};
+        String[] args = {String.valueOf(_id)};
+        Cursor cursor = database.query(TABLE_NAME,columns,_ID + "=?", args,null,null,null,"1");
+        return cursor;
+    }
+
     public Cursor getOne(long _id){
-        String[] columns =  {_ID,TITLE, DESCRIPTION, DATE, TIME , ADDRESS,VISITED};
+        String[] columns =  {_ID,TITLE, DESCRIPTION, DATE, TIME , ADDRESS,PHONE,VISITED};
         String[] args = {String.valueOf(_id)};
         Cursor cursor = database.query(TABLE_NAME,columns,_ID + "=?", args,null,null,null,"1");
         return cursor;
 
     }
-
-
-
-
-
 }
