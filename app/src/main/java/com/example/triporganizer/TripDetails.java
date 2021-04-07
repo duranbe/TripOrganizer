@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +19,13 @@ import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class TripDetails extends AppCompatActivity {
@@ -163,10 +170,46 @@ public class TripDetails extends AppCompatActivity {
 
         }
 
-        Intent notifyIntent = new Intent(this,MyReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 2, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(7*24*60), pendingIntent);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("PREF_NAME", Context.MODE_PRIVATE);
+        String reminder = sharedPreferences.getString("reminder","1w");
+
+        int nbWeeks = 1;
+         switch (reminder){
+             case "1w":
+                 nbWeeks =1 ;
+                 break;
+             case "2w":
+                 nbWeeks =2 ;
+                 break;
+             case "3w":
+                 nbWeeks =3 ;
+                 break;
+         }
+
+        try {
+
+            final String OLD_FORMAT = "MM-dd-yyyy";
+            final String NEW_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
+            String newDateString;
+            SimpleDateFormat formatter = new SimpleDateFormat(OLD_FORMAT);
+            Date d = formatter.parse(date);
+            formatter.applyPattern(NEW_FORMAT);
+            newDateString = formatter.format(d);
+
+            Timestamp ts = Timestamp.valueOf(newDateString);
+            long tsTime= ts.getTime();
+
+            Intent notifyIntent = new Intent(this,MyReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 2, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+
+            alarmManager.set(AlarmManager.RTC_WAKEUP,  tsTime - TimeUnit.MINUTES.toMillis(nbWeeks*7*24*60), pendingIntent);
+
+        } catch(Exception e) {
+
+        }
+
         startActivity(main);
 
     }
