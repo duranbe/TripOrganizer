@@ -30,9 +30,9 @@ public class ListFragment extends androidx.fragment.app.ListFragment {
 
         final String[] from = new String[]{DatabaseHelper._ID, DatabaseHelper.TITLE,
                 DatabaseHelper.DESCRIPTION, DatabaseHelper.DATE, DatabaseHelper.TIME,DatabaseHelper.ADDRESS,
-                DatabaseHelper.VISITED};
+                DatabaseHelper.PHONE,DatabaseHelper.VISITED};
 
-        final int[]to = new int[]{R.id.idTrip,R.id.tvTitle,R.id.tvDescription,R.id.tvDate,R.id.tvTime,R.id.tvAddress,R.id.tvVisited};
+        final int[]to = new int[]{R.id.idTrip,R.id.tvTitle,R.id.tvDescription,R.id.tvDate,R.id.tvTime,R.id.tvAddress,R.id.tvPhone,R.id.tvVisited};
 
 
         Cursor c = myHelper.getAllTrips();
