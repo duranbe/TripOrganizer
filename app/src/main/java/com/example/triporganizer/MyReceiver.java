@@ -3,6 +3,7 @@ package com.example.triporganizer;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 public class MyReceiver extends BroadcastReceiver {
     public MyReceiver() {
@@ -11,7 +12,8 @@ public class MyReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        Intent myTntent = new Intent(context, MyNewIntentService.class);
-        context.startService(myTntent);
+        Intent myIntent = new Intent(context, MyNewIntentService.class);
+        myIntent.putExtra("TripTitle",intent.getStringExtra("TripTitle"));
+        context.startService(myIntent);
     }
 }

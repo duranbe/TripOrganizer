@@ -201,10 +201,14 @@ public class TripDetails extends AppCompatActivity {
             long tsTime= ts.getTime();
 
             Intent notifyIntent = new Intent(this,MyReceiver.class);
+            notifyIntent.putExtra("TripTitle",title);
+
             PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 2, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
             AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
 
-            alarmManager.set(AlarmManager.RTC_WAKEUP,  tsTime - TimeUnit.MINUTES.toMillis(nbWeeks*7*24*60), pendingIntent);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(1), pendingIntent);
+            //alarmManager.set(AlarmManager.RTC_WAKEUP,  tsTime - TimeUnit.MINUTES.toMillis(nbWeeks*7*24*60), pendingIntent);
 
         } catch(Exception e) {
 
