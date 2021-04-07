@@ -10,7 +10,7 @@
     <string name="hint_description">Description du voyage</string>
     <string name="hint_date">Date du voyage</string>
     <string name="hint_time">Heure du voyage</string>
-    <string name="hint_address">Addresse/Lieu du voyage </string>
+    <string name="hint_address">Adresse/Lieu du voyage </string>
     <string name="btn_save">Enregistrer</string>
     <string name="btn_cancel">Annuler</string>
     <string name="empty_list">Rien à voir ici</string>
