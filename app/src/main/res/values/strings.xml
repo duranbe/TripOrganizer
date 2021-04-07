@@ -18,7 +18,7 @@
     <string name="settings_en">English</string>
     <string name="settings_fr">French</string>
     <string name="sample_text">SampleText</string>
-    <string name="settings_notification">Notification</string>
+    <string name="settings_notification">Reminder</string>
     <string name="settings_1w">1 week before</string>
     <string name="settings_2w">2 weeks before</string>
     <string name="settings_3w">3 weeks before</string>

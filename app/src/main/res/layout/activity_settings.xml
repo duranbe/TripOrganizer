@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -60,21 +59,24 @@
             android:text="@string/settings_notification" />
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/rbOneWeek"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onReminderRadioButtonClick"
             android:text="@string/settings_1w" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/rbTwoWeek"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onReminderRadioButtonClick"
             android:text="@string/settings_2w" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/rbThreeWeek"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onReminderRadioButtonClick"
             android:text="@string/settings_3w" />
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>
