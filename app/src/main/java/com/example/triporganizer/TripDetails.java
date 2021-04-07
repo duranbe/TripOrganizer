@@ -211,8 +211,8 @@ public class TripDetails extends AppCompatActivity {
 
             AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
 
-            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(1), pendingIntent);
-            //alarmManager.set(AlarmManager.RTC_WAKEUP,  tsTime - TimeUnit.MINUTES.toMillis(nbWeeks*7*24*60), pendingIntent);
+            //alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(1), pendingIntent); //Demo Line
+            alarmManager.set(AlarmManager.RTC_WAKEUP,  tsTime - TimeUnit.MINUTES.toMillis(nbWeeks*7*24*60), pendingIntent);
 
         } catch(Exception e) {
 
