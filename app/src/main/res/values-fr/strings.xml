@@ -22,4 +22,6 @@
     <string name="settings_1w">1 Semaine avant</string>
     <string name="settings_2w">2 Semaines avant</string>
     <string name="settings_3w">3 Semaines avant</string>
+    <string name="hint_phone">Numéro de Téléphone</string>
+    <string name="form_phone">Téléphone</string>
 </resources>

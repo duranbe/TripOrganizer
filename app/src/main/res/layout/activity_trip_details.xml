@@ -7,7 +7,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
 
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
 
 
@@ -148,14 +148,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/form_phone" />
 
             <EditText
                 android:id="@+id/etPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:hint="@string/hint_phone"
+                android:inputType="phone"
+                android:importantForAutofill="no" />
         </TableRow>
 
         <TableRow
